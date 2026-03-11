@@ -4,7 +4,7 @@ const {createBlogPost,getBlogPosts,getBlogPostAtHome,getBlogPostById,getBlogPost
 const {jwt}=require('../middlewares/jwt');
 const uploadFile = require('../middlewares/fileUploadToDO');
 
-router.post('/',jwt,uploadFile,createBlogPost);
+router.post('/',jwt,createBlogPost);
 router.get('/',getBlogPosts);
 router.get('/slug/:slug',getBlogPostBySlug);
 router.get('/home/:page',getBlogPostAtHome);
