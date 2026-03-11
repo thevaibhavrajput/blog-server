@@ -3,11 +3,11 @@ const BlogPost = require('../models/blogPostModel');
 const createBlogPost = async (req, res) => {
     try{
         const {title,content,excerpt,category,tags,file,aiDiscussionAudio}=req.body;
-        if(!title || !content || !category || !tags || !file){
+        if(!title || !content || !category || !tags){
             return res.status(400).json({success:false,message:'All fields are required'});
         }
         const slug = title.replace(/[^a-zA-Z0-9 ]/g, '').replace(/ /g, '-').toLowerCase();
-        const blogPost = BlogPost.create({
+        const blogPost = await BlogPost.create({
             title,
             content,
             slug,
